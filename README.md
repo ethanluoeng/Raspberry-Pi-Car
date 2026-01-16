@@ -25,18 +25,20 @@ Featuring four-motor drive, PWM speed control, remote operation over MQTT and a 
 
 ## 🧠 System Architecture
 
-graph TD
-    A[Laptop Controller] -->|MQTT Commands| B[HiveMQ Broker]
-    B --> C[Raspberry Pi]
-    
-    subgraph "Raspberry Pi Internals"
-    C --> D[MQTT Client]
-    C --> E[Motor Control Logic]
-    C --> F[GPIO + PWM Outputs]
-    end
-    
-    F --> G[Motor Driver]
-    G --> H[DC Motors x4]
+Laptop Controller
+      |
+      | (MQTT Commands)
+      v
+HiveMQ Broker
+      |
+      v
+Raspberry Pi
+├── MQTT Client
+├── Motor Control Logic
+└── GPIO + PWM Outputs
+      |
+      v
+Motor Driver → DC Motors (x4)
 
 ## 📈 Future Improvements
 
